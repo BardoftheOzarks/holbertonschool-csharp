@@ -11,7 +11,7 @@ namespace _5_print_comb
                 if (i < 99)
                     Console.Write("{0:d2}, ", i);
                 else
-                    Console.Write(i);
+                    Console.Write("{0}\n", i);
             }
         }
     }
