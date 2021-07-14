@@ -9,12 +9,14 @@ class Dictionary
         string name = "";
         foreach(KeyValuePair<string, int> pair in myList)
         {
-            if (best < pair.Value)
+            if (best <= pair.Value)
             {
                 best = pair.Value;
                 name = pair.Key;
             }
         }
+        if (name == "")
+            return " ";
         return name;
     }
 }
