@@ -6,6 +6,11 @@ class LList
     public static LinkedListNode<int> Insert(LinkedList<int> myLList, int n)
     {
         LinkedListNode<int> scanner = myLList.First;
+        if (scanner.Value > n)
+        {
+            myLList.AddFirst(n);
+            return myLList.First;
+        }
         while (scanner.Next != null)
         {
             if (scanner.Value > n)
