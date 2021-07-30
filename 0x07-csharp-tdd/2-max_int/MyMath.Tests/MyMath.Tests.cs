@@ -14,9 +14,9 @@ namespace MyMath.Tests
             Assert.AreEqual(Operations.Max(testList), 0);
             testList.Add(3);
             Assert.AreEqual(Operations.Max(testList), 3);
-            testList.Add(42);
-            testList.Add(-4);
-            Assert.AreEqual(Operations.Max(testList), 42);
+            testList.Add(4);
+            testList.Add(-42);
+            Assert.AreEqual(Operations.Max(testList), 4);
         }
     }
 }
