@@ -12,12 +12,12 @@ namespace MyMath
             }
             if (num == 0 || matrix == null)
                 return null;
-            int width = matrix.GetLength(0);
-            int length = matrix.GetLength(1);
-            var answers = new int[width, length];
-            for (int i = 0; i < width; i++)
+            int rows = matrix.GetLength(0);
+            int columns = matrix.GetLength(1);
+            var answers = new int[rows, columns];
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; i < length; j++)
+                for (int j = 0; j < columns; j++)
                 {
                     answers[i, j] = matrix[i, j] / num;
                 }
