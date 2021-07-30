@@ -11,9 +11,11 @@ namespace MyMath.Tests
         public void Test1()
         {
             List<int> testList = new List<int>();
+            Assert.AreEqual(Operations.Max(testList), 0);
             testList.Add(3);
+            Assert.AreEqual(Operations.Max(testList), 3);
             testList.Add(42);
-            testList.Add(4);
+            testList.Add(-4);
             Assert.AreEqual(Operations.Max(testList), 42);
         }
     }
