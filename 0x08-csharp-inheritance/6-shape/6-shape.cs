@@ -21,7 +21,7 @@ class Rectangle : Shape
         get => width;
         set
         {
-            if (value > 0)
+            if (value >= 0)
                 width = value;
             else
                 throw new ArgumentException("Width must be greater than or equal to 0");
@@ -33,7 +33,7 @@ class Rectangle : Shape
         get => height;
         set
         {
-            if (value > 0)
+            if (value >= 0)
                 height = value;
             else
                 throw new ArgumentException("Height must be greater than or equal to 0");
