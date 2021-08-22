@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 class MatrixMath
 {
+    /// <summary>Multiplies a matrix by a scalar</summary>
     public static double[,] MultiplyScalar(double[,] matrix, double scalar)
     {
         if (matrix.GetLength(0) != matrix.GetLength(1)

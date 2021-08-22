@@ -2,6 +2,7 @@
 
 class VectorMath
 {
+    /// <summary>Multiplies two vectors</summary>
     public static double[] Multiply(double[] vector, double scalar)
     {
         if (vector.Length > 3 || vector.Length < 2)
