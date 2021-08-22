@@ -13,7 +13,9 @@ class MatrixMath
         for (int row = 0; row < matrix.GetLength(0); row++)
         {
             ans[row, 0] = Math.Round((matrix[row, 0] * Math.Cos(angle)), 2) - Math.Round((matrix[row, 1] * Math.Sin(angle)), 2);
+            ans[row, 0] = Math.Round(ans[row, 0], 2);
             ans[row, 1] = Math.Round((matrix[row, 0] * Math.Sin(angle)), 2) + Math.Round((matrix[row, 1] * Math.Cos(angle)), 2);
+            ans[row, 1] = Math.Round(ans[row, 1], 2);
         }
         return ans;
     }
