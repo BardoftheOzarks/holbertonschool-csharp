@@ -2,6 +2,7 @@
 
 class MatrixMath
 {
+    /// <summary>Finds the determinant for any matrix</summary>
     public static double Determinant(double[,] matrix)
     {
         if (matrix.GetLength(0) != matrix.GetLength(1))
