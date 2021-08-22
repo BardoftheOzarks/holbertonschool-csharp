@@ -12,8 +12,8 @@ class MatrixMath
         double[,] ans = new double[matrix.GetLength(0), matrix.GetLength(1)];
         for (int row = 0; row < matrix.GetLength(0); row++)
         {
-            ans[row, 0] = Math.Round((matrix[row, 0] * Math.Cos(angle)) - (matrix[row, 1] * Math.Sin(angle)));
-            ans[row, 1] = Math.Round((matrix[row, 0] * Math.Sin(angle)) + (matrix[row, 1] * Math.Cos(angle)));
+            ans[row, 0] = Math.Round((matrix[row, 0] * Math.Cos(angle)) - (matrix[row, 1] * Math.Sin(angle)), 2);
+            ans[row, 1] = Math.Round((matrix[row, 0] * Math.Sin(angle)) + (matrix[row, 1] * Math.Cos(angle)), 2);
         }
         return ans;
     }
