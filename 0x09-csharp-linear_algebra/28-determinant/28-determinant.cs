@@ -5,7 +5,7 @@ class MatrixMath
     /// <summary>Finds the determinant for any matrix</summary>
     public static double Determinant(double[,] matrix)
     {
-        if (matrix.GetLength(0) != matrix.GetLength(1))
+        if (matrix.GetLength(0) != matrix.GetLength(1) || matrix.GetLength(0) > 3)
             return -1;
         
         if (matrix.GetLength(0) > 2)
@@ -32,6 +32,6 @@ class MatrixMath
             return sum;
         }
         double ans = (matrix[0, 0] * matrix[1, 1]) - (matrix[0, 1] * matrix[1, 0]);
-        return ans;
+        return Math.Round(ans, 2);
     }
 }
