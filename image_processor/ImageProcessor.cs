@@ -127,7 +127,7 @@ public class ImageProcessor
         string[] images = Directory.GetFiles("images/", "*.jpg");
         int total = current.Length + images.Length;
         Parallel.ForEach (filenames, file => {
-            CreateBlackWhite(file);
+            CreateBlackWhite(file, threshold);
         });
         while (current.Length != total)
             current = Directory.GetFiles("./", "*.jpg");
@@ -191,7 +191,7 @@ public class ImageProcessor
         string[] images = Directory.GetFiles("images/", "*.jpg");
         int total = current.Length + images.Length;
         Parallel.ForEach (filenames, file => {
-            CreateThumbnail(file);
+            CreateThumbnail(file, height);
         });
         while (current.Length != total)
             current = Directory.GetFiles("./", "*.jpg");
