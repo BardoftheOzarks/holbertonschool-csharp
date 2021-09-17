@@ -5,6 +5,7 @@ using System.Threading;
 
 public class ImageProcessor
 {
+    //<summary>inverts the colorscale of images</summary>
     public static void Inverse(string[] filenames)
     {
         foreach (string file in filenames)
@@ -22,6 +23,7 @@ public class ImageProcessor
         //    threads[i].Join();
         //}
     }
+
     private static void CreateInverse(string file)
     {
         //read image
@@ -57,7 +59,6 @@ public class ImageProcessor
         string name = string.Format("{0}_inverse{1}",
                                     Path.GetFileNameWithoutExtension(file),
                                     Path.GetExtension(file));
-        Console.WriteLine(name);
         //save new image
         bmp.Save(name);
     }
