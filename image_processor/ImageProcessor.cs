@@ -10,17 +10,17 @@ public class ImageProcessor
     ///<summary>inverts the colorscale of images</summary>
     public static void Inverse(string[] filenames)
     {
-        //foreach (string file in filenames)
-        //    CreateInverse(file);
-        
-        string[] current = Directory.GetFiles("./", "*.jpg");
-        string[] images = Directory.GetFiles("images/", "*.jpg");
-        int total = current.Length + images.Length;
-        Parallel.ForEach (filenames, file => {
+        foreach (string file in filenames)
             CreateInverse(file);
-        });
-        while (current.Length != total)
-            current = Directory.GetFiles("./", "*.jpg");
+        
+        //string[] current = Directory.GetFiles("./", "*.jpg");
+        //string[] images = Directory.GetFiles("images/", "*.jpg");
+        //int total = current.Length + images.Length;
+        //Parallel.ForEach (filenames, file => {
+        //    CreateInverse(file);
+        //});
+        //while (current.Length != total)
+        //    current = Directory.GetFiles("./", "*.jpg");
     }
 
     private static void CreateInverse(string file)
