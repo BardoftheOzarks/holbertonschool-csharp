@@ -13,16 +13,14 @@ public class ImageProcessor
         //foreach (string file in filenames)
         //    CreateInverse(file);
         
-        //Thread[] threads = new Thread[filenames.Length];
-        //Console.WriteLine($"Files: {filenames.Length}, Threads: {threads.Length}");
-        string[] current = Directory.GetFiles("./", "*");
-        string[] images = Directory.GetFiles("images/", "*");
+        string[] current = Directory.GetFiles("./", "*.jpg");
+        string[] images = Directory.GetFiles("images/", "*.jpg");
         int total = current.Length + images.Length;
         Parallel.ForEach (filenames, file => {
             CreateInverse(file);
         });
         while (current.Length != total)
-            current = Directory.GetFiles("./", "*");
+            current = Directory.GetFiles("./", "*.jpg");
     }
 
     private static void CreateInverse(string file)
