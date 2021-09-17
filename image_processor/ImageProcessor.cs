@@ -3,6 +3,7 @@ using System.IO;
 using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 ///<summary>Collection of methods for image manipulation</summary>
 public class ImageProcessor
@@ -16,9 +17,12 @@ public class ImageProcessor
         //string[] current = Directory.GetFiles("./", "*.jpg");
         //string[] images = Directory.GetFiles("images/", "*.jpg");
         //int total = current.Length + images.Length;
+        Stopwatch timer = Stopwatch.StartNew();
         Parallel.ForEach (filenames, file => {
             CreateInverse(file);
         });
+        timer.Stop();
+        Console.WriteLine(timer.Elapsed);
         //while (current.Length != total)
         //    current = Directory.GetFiles("./", "*.jpg");
     }
