@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Drawing;
 using System.Threading;
+using System.Threading.Tasks;
 
 ///<summary>Collection of methods for image manipulation</summary>
 public class ImageProcessor
@@ -9,20 +10,19 @@ public class ImageProcessor
     ///<summary>inverts the colorscale of images</summary>
     public static void Inverse(string[] filenames)
     {
-        foreach (string file in filenames)
-            CreateInverse(file);
+        //foreach (string file in filenames)
+        //    CreateInverse(file);
+        
         //Thread[] threads = new Thread[filenames.Length];
         //Console.WriteLine($"Files: {filenames.Length}, Threads: {threads.Length}");
-        //for (int i = 0; i < filenames.Length; i++)
-        //{
-        //    Console.WriteLine($"i = {i}");
-        //    threads[i] = new Thread(() => CreateInverse(filenames[i]));
-        //    threads[i].Start();
-        //}
-        //for (int i = 0; i < threads.Length; i++)
-        //{
-        //    threads[i].Join();
-        //}
+        string[] current = Directory.GetFiles("./", "*");
+        string[] images = Directory.GetFiles("images/", "*");
+        int total = current.Length + images.Length;
+        Parallel.ForEach (filenames, file => {
+            CreateInverse(file);
+        });
+        while (current.Length != total)
+            current = Directory.GetFiles("./", "*");
     }
 
     private static void CreateInverse(string file)
