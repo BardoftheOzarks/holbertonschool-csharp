@@ -65,10 +65,18 @@ public class ImageProcessor
     ///<summary>Recreates an image in grayscale</summary>
     public static void Grayscale(string[] filenames)
     {
-        foreach (string file in filenames)
-        {
+        //foreach (string file in filenames)
+        //{
+        //    CreateGrayscale(file);
+        //}
+        string[] current = Directory.GetFiles("./", "*.jpg");
+        string[] images = Directory.GetFiles("images/", "*.jpg");
+        int total = current.Length + images.Length;
+        Parallel.ForEach (filenames, file => {
             CreateGrayscale(file);
-        }
+        });
+        while (current.Length != total)
+            current = Directory.GetFiles("./", "*.jpg");
     }
 
     private static void CreateGrayscale(string file)
@@ -111,10 +119,18 @@ public class ImageProcessor
     ///<summary>Reproduces image with only black and white pixels based on set threshold</summary>
     public static void BlackWhite(string[] filenames, double threshold)
     {
-        foreach (string file in filenames)
-        {
-            CreateBlackWhite(file, threshold);
-        }
+        //foreach (string file in filenames)
+        //{
+        //    CreateBlackWhite(file, threshold);
+        //}
+        string[] current = Directory.GetFiles("./", "*.jpg");
+        string[] images = Directory.GetFiles("images/", "*.jpg");
+        int total = current.Length + images.Length;
+        Parallel.ForEach (filenames, file => {
+            CreateBlackWhite(file);
+        });
+        while (current.Length != total)
+            current = Directory.GetFiles("./", "*.jpg");
     }
     
     private static void CreateBlackWhite(string file, double threshold)
@@ -167,10 +183,18 @@ public class ImageProcessor
     ///<summary>Creates a thumbnail of an image at the specified height</summary>
     public static void Thumbnail(string[] filenames, int height)
     {
-        foreach (string file in filenames)
-        {
-            CreateThumbnail(file, height);
-        }
+        //foreach (string file in filenames)
+        //{
+        //    CreateThumbnail(file, height);
+        //}
+        string[] current = Directory.GetFiles("./", "*.jpg");
+        string[] images = Directory.GetFiles("images/", "*.jpg");
+        int total = current.Length + images.Length;
+        Parallel.ForEach (filenames, file => {
+            CreateThumbnail(file);
+        });
+        while (current.Length != total)
+            current = Directory.GetFiles("./", "*.jpg");
     }
 
     private static void CreateThumbnail(string file, int newHeight)
