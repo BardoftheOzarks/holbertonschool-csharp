@@ -75,8 +75,8 @@ public class ImageProcessor
         Parallel.ForEach (filenames, file => {
             CreateGrayscale(file);
         });
-        while (current.Length != total)
-            current = Directory.GetFiles("./", "*.jpg");
+        //while (current.Length != total)
+        //    current = Directory.GetFiles("./", "*.jpg");
     }
 
     private static void CreateGrayscale(string file)
