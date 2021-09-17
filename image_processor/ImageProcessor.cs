@@ -12,6 +12,7 @@ public class ImageProcessor
     {
         foreach (string file in filenames)
             CreateInverse(file);
+        Console.WriteLine("OK");
         
         //string[] current = Directory.GetFiles("./", "*.jpg");
         //string[] images = Directory.GetFiles("images/", "*.jpg");
