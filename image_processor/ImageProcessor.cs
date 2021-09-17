@@ -3,6 +3,7 @@ using System.IO;
 using System.Drawing;
 using System.Threading;
 
+//<summary>Collection of methods for image manipulation</summary>
 public class ImageProcessor
 {
     //<summary>inverts the colorscale of images</summary>
@@ -63,6 +64,7 @@ public class ImageProcessor
         bmp.Save(name);
     }
 
+    //<summary>Recreates an image in grayscale</summary>
     public static void Grayscale(string[] filenames)
     {
         foreach (string file in filenames)
@@ -108,6 +110,7 @@ public class ImageProcessor
         bmp.Save(name);
     }
 
+    //<summary>Reproduces image with only black and white pixels based on set threshold</summary>
     public static void BlackWhite(string[] filenames, double threshold)
     {
         foreach (string file in filenames)
@@ -163,6 +166,7 @@ public class ImageProcessor
         bmp.Save(name);
     }
 
+    //<summary>Creates a thumbnail of an image at the specified height</summary>
     public static void Thumbnail(string[] filenames, int height)
     {
         foreach (string file in filenames)
@@ -171,7 +175,7 @@ public class ImageProcessor
         }
     }
 
-    static void CreateThumbnail(string file, int newHeight)
+    private static void CreateThumbnail(string file, int newHeight)
     {
         //read image
         Bitmap bmp = new Bitmap(file);
