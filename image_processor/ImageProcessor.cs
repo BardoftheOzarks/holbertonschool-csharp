@@ -1,7 +1,8 @@
 using System;
 using System.IO;
 using System.Drawing;
-using System.Threading;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 ///<summary>Collection of methods for image manipulation</summary>
@@ -25,35 +26,37 @@ public class ImageProcessor
 
     private static void CreateInverse(string file)
     {
-        //read image
         Bitmap bmp = new Bitmap(file);
+        BitmapData bitmapData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadWrite, bmp.PixelFormat);
 
-        //get image dimensions
-        int width = bmp.Width;
-        int height = bmp.Height;
+        int bytesPerPixel = Bitmap.GetPixelFormatSize(bmp.PixelFormat) / 8;
+        int byteCount = bitmapData.Stride * bmp.Height;
+        byte[] pixels = new byte[byteCount];
+        IntPtr ptrFirstPixel = bitmapData.Scan0;
+        Marshal.Copy(ptrFirstPixel, pixels, 0, pixels.Length);
+        int heightInPixels = bitmapData.Height;
+        int widthInBytes = bitmapData.Width * bytesPerPixel;
 
-        //change each pixel to inverse
-        for (int y = 0; y < height; y++)
+        for (int y = 0; y < heightInPixels; y++)
         {
-            for (int x = 0; x < width; x++)
+            int currentLine = y * bitmapData.Stride;
+            for (int x = 0; x < widthInBytes; x = x + bytesPerPixel)
             {
-                //get pixel values
-                Color pixel = bmp.GetPixel(x, y);
+                int oldBlue = pixels[currentLine + x];
+                int oldGreen = pixels[currentLine + x + 1];
+                int oldRed = pixels[currentLine + x + 2];
 
-                //extract specific values
-                int red = pixel.R;
-                int green = pixel.G;
-                int blue = pixel.B;
-
-                //invert values
-                red = 255 - red;
-                green = 255 - green;
-                blue = 255 - blue;
-
-                //set new values to pixel
-                bmp.SetPixel(x, y, Color.FromArgb(red, green, blue));
+                // calculate new pixel value
+                pixels[currentLine + x] = (byte)(255 - oldBlue);
+                pixels[currentLine + x + 1] = (byte)(255 - oldGreen);
+                pixels[currentLine + x + 2] = (byte)(255 - oldRed);
             }
         }
+ 
+        // copy modified bytes back
+        Marshal.Copy(pixels, 0, ptrFirstPixel, pixels.Length);
+        bmp.UnlockBits(bitmapData);
+
         //create new file name
         string name = string.Format("{0}_inverse{1}",
                                     Path.GetFileNameWithoutExtension(file),
