@@ -64,16 +64,16 @@ class Player
     }
 }
 
-/// <summary>Modifier to apply</summary>
+///<summary>Modifier to apply</summary>
 public enum Modifier
 {
-    /// <summary> weak modifier </summary>
+    ///<summary> weak modifier </summary>
     Weak=1,
-    /// <summary> base modifier </summary>
+    ///<summary> base modifier </summary>
     Base,
-    /// <summary> strong modifier </summary>
+    ///<summary> strong modifier </summary>
     Strong
 }
 
-/// <summary> modifiers for health adjustment </summary>
+///<summary> modifiers for health adjustment </summary>
 public delegate float CalculateModifier(float baseValue, Modifier modifier);
