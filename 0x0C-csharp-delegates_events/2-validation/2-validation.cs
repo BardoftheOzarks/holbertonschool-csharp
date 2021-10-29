@@ -28,7 +28,7 @@ class Player
 
     public void TakeDamage(float damage)
     {
-        if (amount <= 0)
+        if (damage <= 0)
             Console.WriteLine($"{this.name} takes 0 damage!");
         else
         {
